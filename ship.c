@@ -68,16 +68,12 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 } 
 
 //Sets a pixels of the screen buffer
-//Inline means the compiler essentially copy and pastes the contents of the function where it's called
-//...to avoid function overheard which is slow
 static inline void setPixel(int x, int y, int col)
 {
-	//Parse the void pointer to an int pointer then deference it like an array
 	((int *)scrBuff.Memory)[x + y * scrBuff.width] = col;
 }
 
 //Bresenham line algorithm
-//Bresenham is a cool guy probs
 void bLine(int x1, int y1, int x2, int y2)
 {
    int m_new = 2 * (y2 - y1);
@@ -105,11 +101,10 @@ void BlitBmp(Pixels * src, BUFF * dest, int xloc, int yloc)
 		for(int x = 0; x < src->width; x++)
 		{
 			int index = ((y*src->width)+x)*4;
-			//This pointer points to the memory of the image, at the index of the current pixel
 			uint8_t * cptr = (uint8_t *)src->memory + index;
 			if(cptr[3] != 0) //Checks if the alpha channel is not transparent
 			{
-				//Could do this in one line with an int * instead ah well
+				//change to int *
 				uint8_t * mptr = (uint8_t *)dest->Memory + destLoc + ((dest->width * y) + x)*4; //inverse y to flip vertically, x horizontally? and replace y with x for horizontal directions
 				mptr[0] = cptr[0];
 				mptr[1] = cptr[1];
@@ -139,7 +134,7 @@ int createEntity(uint8_t flags)
 	return EntityNum;
 }
 
-//Draws the bitmap to the screen with rotation, it's a workaround
+//Draws the bitmap to the screen with rotation, it's a temporary workaround
 void rotBlit(Pixels * bmp, int xx, int yy, int degrees)
 {
 	float radians = Deg2Rad(degrees);
