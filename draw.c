@@ -4,10 +4,10 @@
 #include<stdint.h> //for the uint8_t stuff
 #include<string.h> //I forgot
 #include<CommCtrl.h> //For the trackbars
-#include"resource.h" //This don't work yet
+#include"resource.h" //This doesn't work yet
 
-/*Hi, this is the drawing tool, it can do some stuff, all files must be saved as .bin, can only open .bin files
-cannot resize the canvas yet, u have to recompile it. Change the values on line 383 to change the size*/
+/*This is the drawing tool, it can create, save and edit custom bin file images which can be exported into the game engine and used there
+cannot resize the canvas yet, u have to recompile it*/
 //Type the below command in command prompt to compile it
 //gcc -o draw.exe draw.c -l gdi32 -l comdlg32 
 #define ID_TRACK 1002
@@ -19,7 +19,6 @@ cannot resize the canvas yet, u have to recompile it. Change the values on line 
 #define GETTING 2
 #define FLOODFILL 3
 
-//Primitive sounds cool
 static inline void setPixelPrimitive(int x, int y, int col);
 int getPixelPrimitive(int x, int y);
 void loadBmp(char * str);
@@ -382,7 +381,7 @@ int APIENTRY WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, PSTR Comman
     //change the width and height, 64 and 64 to something you want, rn has to be a factor of 960(the actual size)
     mainBmp = newBmp(0,0, 960, 960, 64, 64);
 
-    //Set bitmap to transparent gray
+    //Set bitmap to transparent grey
     for(int i = 0; i < mainBmp.size / 4; ++i)
         ((unsigned int *)mainBmp.Memory)[i] = 0x00808080;
     
