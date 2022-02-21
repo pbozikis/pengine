@@ -4,12 +4,14 @@
 #include<stdint.h> //for the uint8_t stuff
 #include<string.h> //I forgot
 #include<CommCtrl.h> //For the trackbars
-#include"resource.h" //This doesn't work yet
 
 /*This is the drawing tool, it can create, save and edit custom bin file images which can be exported into the game engine and used there
 cannot resize the canvas yet, u have to recompile it*/
+
 //Type the below command in command prompt to compile it
 //gcc -o draw.exe draw.c -l gdi32 -l comdlg32 
+
+
 #define ID_TRACK 1002
 
 
@@ -343,12 +345,12 @@ int APIENTRY WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, PSTR Comman
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	wc.hInstance = GetModuleHandleA(NULL);
-	wc.hIcon = LoadIconA(NULL, MAKEINTRESOURCE(IDI_LOGO));
+	wc.hIcon = LoadIconA(NULL, MAKEINTRESOURCE(IDI_WINLOGO));
 	wc.hCursor = LoadCursorA(NULL, IDC_ARROW);
 	wc.hbrBackground = CreateSolidBrush(RGB(0,100,50));
 	wc.lpszMenuName = NULL;
 	wc.lpszClassName = "Sprite Maker";
-	wc.hIconSm = LoadIconA(NULL, MAKEINTRESOURCE(IDI_LOGO));
+	wc.hIconSm = LoadIconA(NULL, MAKEINTRESOURCE(IDI_WINLOGO));
 
     ofc.lStructSize = sizeof ofc;
     ofc.hwndOwner = HmainWnd;
