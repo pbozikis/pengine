@@ -118,32 +118,7 @@ BOOL alphaCollision(int x, int y, unsigned char val)
 	return(ptr[3] == val);
 }
 
-//Bline collision forgot name for it =, laser pointing??
-//Raycasting you silly Goose
-int bresenham(int x1, int y1, int x2, int y2)
-{
-   int m_new = 2 * (y2 - y1);
-   int slope_error_new = m_new - (x2 - x1);
-   for (int x = x1, y = y1; x <= x2; x++)
-   {
-      if(y == 88 && x >= 240 && x<= 248)
-	  {
-		return 1;
-	  }
-  
-      // Add slope to increment angle formed
-      slope_error_new += m_new;
-  
-      // Slope error reached limit, time to
-      // increment y and update slope error.
-      if (slope_error_new >= 0)
-      {
-        y++;
-        slope_error_new  -= 2 * (x2 - x1);
-      }
-   }
-   return(0);
-}
+
 
 void pInput()
 {
@@ -200,7 +175,7 @@ void pInput()
 		bvspeed--;
 	}
 
-	//Border Collision BorderCollie hehe
+	//Border Collision
 	if(ball.x + bhspeed + 8 >= scrBuff.width || ball.x + bhspeed <= 0 || simpleCollision(239, 88, &ball) || simpleCollision(250, 87, &ball) || simpleCollision(250, 100, &ball) || simpleCollision(250, 93, &ball))
 	{
 		bhspeed = -bhspeed + SIGN(bhspeed);
